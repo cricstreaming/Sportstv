@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" href="https://i.ibb.co/cC6ZdC9/Join-Telegram-cric-streaming.jpg" type="image/png" sizes="48x48">
+    <meta charset="UTF-8">
+    <title>SPORTS WEB </title>
+    <meta content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" name="viewport">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script disable-devtool-auto='true' src='https://cdn.jsdelivr.net/npm/disable-devtool' clear-log='true' disable-select='true' disable-copy='true' disable-cut='true' disable-paste='true'></script>
+    <style>
+        .loading {
+            margin-top: 0;
+            font-weight: 700;
+            vertical-align: middle;
+            line-height: 150px;
+            font-size: 25px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, red 30%, rgb(10, 60, 215) 75%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 {
+            background-color: #000;
+            margin: 0;
+            text-align: center;
+            padding: 5px
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none
+        }
+
+        tr th {
+            font-tvv-name: bold;
+            background-color: green;
+            padding: 1px
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0
+            }
+
+            66% {
+                opacity: 0
+            }
+
+            100% {
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes fadein {
+            0% {
+                opacity: 0
+            }
+
+            66% {
+                opacity: 0
+            }
+
+            100% {
+                opacity: 1
+            }
+        }
+
+        .tvv-item {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            margin: 2px;
+            padding: 3px;
+            border: 1px solid green z-index: 1;
+            background: White;
+            box-shadow: 3px 2px 2px black;
+            overflow: hidden;
+            border-radius: 4px;
+            filter: contrast(100%)
+        }
+
+        .tvv-item>* {
+            margin: 0;
+            padding: 0
+        }
+
+        .tvv-item .tvv-thumb {
+            width: 100%;
+            bottom: 10px;
+            top: 0px;
+            position: absolute;
+            right: 0;
+            float: center;
+        }
+
+        .tvv-item .tvv-thumb img {
+            width: 100%;
+            pointer-events: none
+        }
+
+        .tvv-item .tvv-name {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            font-size: 12px;
+            display: block;
+            text-align: center;
+            width: 100%;
+            color: black;
+            padding: 5px;
+            font-weight: 800;
+            text-overflow: ellipsis;
+            black-space: nowrap;
+            overflow: hidden;
+            background: linear-gradient(to bottom left, #15b4ff 20%, #fff 100%);
+            box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5);
+            7px 7px 20px 0px rgba(0, 0, 0, .1),
+            4px 4px 5px 0px rgba(0, 0, 0, .1);
+            transition: all 0.3s ease;
+        }
+
+        .tvv-item img {
+            width: 100%;
+            pointer-events: none
+        }
+
+        .tvv-item:after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 0;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            border-radius: 5px;
+            border: 0px solid green;
+            background-color: black;
+            background-image: linear-gradient(to bottom left, #32c0cc 20%, #fff 100%);
+            box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5);
+            7px 7px 20px 0px rgba(0, 0, 0, .1),
+            4px 4px 5px 0px rgba(0, 0, 0, .1);
+            transition: all 0.3s ease;
+        }
+
+        .tvv-item:hover {
+            color: #000;
+        }
+
+        .tvv-item:hover:after {
+            top: auto;
+            bottom: 0;
+            height: 100%;
+        }
+
+        .tvv-item:active {
+            top: 5px;
+        }
+
+        .tvv-name:hover {}
+
+        .fin {
+            width: 100%;
+            margin-top: 1px;
+            margin-bottom: 2px;
+            float: center;
+            height: 30px;
+            font-size: small;
+            background-color: rgb(40, 40, 40);
+            color: black;
+            border-radius: 10px;
+            border: 3px solid greenoutline: none;
+            text-align: center;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .fin,
+        .dftr {
+            width: 100%;
+            margin-top: 1px;
+            margin-bottom: 2px;
+            float: center;
+            height: 30px;
+            font-style: bold;
+            background-color: rgb(40, 40, 40);
+            color: purple;
+            background: linear-gradient(135deg, snow 0%, seashell 64%);
+            border-radius: 0px;
+            border: 2px solid red;
+            outline: none;
+            text-align: center;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .fin:hover,
+        .dftr:hover {
+            border: 3px solid rgb(255, 60, 140);
+            color: red;
+            background: linear-gradient(135deg, azure 0%, floralwhite 64%);
+        }
+
+        .tvv-item {
+            width: calc(100%/20 - 10px)
+        }
+        }
+
+        @media only screen and (max-width:2600px) {
+            .tvv-item {
+                width: calc(100%/19 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:2470px) {
+            .tvv-item {
+                width: calc(100%/18 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:2340px) {
+            .tvv-item {
+                width: calc(100%/17 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:2210px) {
+            .tvv-item {
+                width: calc(100%/16 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:2080px) {
+            .tvv-item {
+                width: calc(100%/15 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:1950px) {
+            .tvv-item {
+                width: calc(100%/14 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:1820px) {
+            .tvv-item {
+                width: calc(100%/13 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:1690px) {
+            .tvv-item {
+                width: calc(100%/12 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:1560px) {
+            .tvv-item {
+                width: calc(100%/11 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:1430px) {
+            .tvv-item {
+                width: calc(100%/10 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:1300px) {
+            .tvv-item {
+                width: calc(100%/9 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:1170px) {
+            .tvv-item {
+                width: calc(100%/8 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:1040px) {
+            .tvv-item {
+                width: calc(100%/7 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:910px) {
+            .tvv-item {
+                width: calc(100%/6 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:780px) {
+            .tvv-item {
+                width: calc(100%/5 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:650px) {
+            .tvv-item {
+                width: calc(100%/4 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:520px) {
+            .tvv-item {
+                width: calc(100%/3 - 10px)
+            }
+        }
+
+        @media only screen and (max-width:390px) {
+            .tvv-item {
+                width: calc(100%/2 - 10px)
+            }
+        }
+
+        .custom-btn {
+            width: 130px;
+            height: 40px;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 25px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+            outline: none;
+        }
+
+        .btn-11 {
+            border: white;
+            background: green;
+            background: linear-gradient(80deg, #15b4ff 10%, black 100%);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .btn-11:hover {
+            text-decoration: none;
+            color: #fff;
+            background-image: linear-gradient(135deg,  #15b4ff 100%, #000000 20%);
+        }
+
+        .btn-11:before {
+            position: absolute;
+            content: '';
+            display: inline-block;
+            top: -180px;
+            left: 0;
+            width: 30px;
+            height: 100%;
+            background-color: #fff;
+            animation: shiny-btn1 3s ease-in-out infinite;
+        }
+
+        .btn-11:hover {
+            opacity: .7;
+            color: white;
+        }
+
+        .btn-11:active {
+            box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .3), -4px -4px 6px 0 rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(255, 255, 255, .2), inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+        }
+
+        @-webkit-keyframes shiny-btn1 {
+            0% {
+                -webkit-transform: scale(0) rotate(45deg);
+                opacity: 0;
+            }
+
+            80% {
+                -webkit-transform: scale(0) rotate(45deg);
+                opacity: 0.5;
+            }
+
+            81% {
+                -webkit-transform: scale(4) rotate(45deg);
+                opacity: 1;
+            }
+
+            100% {
+                -webkit-transform: scale(50) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        @import url("https://fonts.googleapis.com/css?family=Roboto");
+
+        @-webkit-keyframes come-in {
+            0% {
+                -webkit-transform: translatey(100px);
+                transform: translatey(100px);
+                opacity: 0;
+            }
+
+            30% {
+                -webkit-transform: translateX(-50px) scale(0.4);
+                transform: translateX(-50px) scale(0.4);
+            }
+
+            70% {
+                -webkit-transform: translateX(0px) scale(1.2);
+                transform: translateX(0px) scale(1.2);
+            }
+
+            100% {
+                -webkit-transform: translatey(0px) scale(1);
+                transform: translatey(0px) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes come-in {
+            0% {
+                -webkit-transform: translatey(100px);
+                transform: translatey(100px);
+                opacity: 0;
+            }
+
+            30% {
+                -webkit-transform: translateX(-50px) scale(0.4);
+                transform: translateX(-50px) scale(0.4);
+            }
+
+            70% {
+                -webkit-transform: translateX(0px) scale(1.2);
+                transform: translateX(0px) scale(1.2);
+            }
+
+            100% {
+                -webkit-transform: translatey(0px) scale(1);
+                transform: translatey(0px) scale(1);
+                opacity: 1;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            background: #eaedf2;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .stwBlurRainbow,
+        .stwRainbow {
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            z-index: 23;
+            background: linear-gradient(-45deg, #4086f4, #31a952, #fbbe01, #eb4132, #4086f4, #31a952, #fbbe01, #eb4132);
+            background-size: 200%;
+            -webkit-animation: animeBar 5s linear infinite;
+            animation: animeBar 5s linear infinite
+        }
+
+        .stwBlurRainbow {
+            height: 10px;
+            z-index: 22;
+            filter: blur(10px);
+            opacity: .7
+        }
+
+        @-webkit-keyframes animeBar {
+            0% {
+                background-position: 0 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0 50%
+            }
+        }
+
+        @keyframes animeBar {
+            0% {
+                background-position: 0 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0 50%
+            }
+        }
+
+        .uc {
+            pointer-events: none;
+        }
+    </style>
+    <center>
+        <button class="btn-11 custom-btn" style="width: 100%; font-weight: 1000; font-size: 20px; position: sticky; top: 0px; z-index: 3; font-family: Lucida Sans Unicode; line-height: 1rem;">CRIC STREAMING LIVE WEB</button>
+        
+        <a href="https://telegram.me/cric_streaming">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/cC6ZdC9/Join-Telegram-cric-streaming.jpg" style="height: 100px">
+                <div class="tvv-name">TELEGRAM JOIN</div>
+            </div>
+        </a>
+      
+      <a href="//starhin-cricstreaming.vercel.app/">
+                    <div class="tvv-item">
+                                    <img class="loading" src="https://i.ibb.co/C26NF7X/20231023-111211.png" style="height: 90px">
+                                                    <div class="tvv-name">Star Hindi</div>
+                                                                </div>
+      </a>
+
+      <a href="//star1-cricstreaming.vercel.app/">
+                    <div class="tvv-item">
+                                    <img class="loading" src="https://img1.hotstarext.com/image/upload/f_auto,t_web_hs_2x/sources/r1/cms/prod/1167/661167-h" style="height: 90px">
+                                                    <div class="tvv-name">Star Sports 1</div>
+                                                                </div>
+      </a>
+
+      <a href="//star2-cricstreaming.vercel.app/">
+                    <div class="tvv-item">
+                                    <img class="loading" src="https://img1.hotstarext.com/image/upload/f_auto,t_web_hs_2x/sources/r1/cms/prod/1168/661168-h" style="height: 90px">
+                                                    <div class="tvv-name">Star Sports 2</div>
+                                                                </div>
+      </a>
+
+      <a href="//select1-cricstreaming.vercel.app/">
+                    <div class="tvv-item">
+                                    <img class="loading" src="https://img1.hotstarext.com/image/upload/f_auto,t_web_hs_2x/sources/r1/cms/prod/1181/661181-h" style="height: 90px">
+                                                    <div class="tvv-name">Star Select 1</div>
+                                                                </div>
+      </a>
+
+      <a href="//select2-cricstreaming.vercel.app/">
+                    <div class="tvv-item">
+                                    <img class="loading" src="https://img1.hotstarext.com/image/upload/f_auto,t_web_hs_2x/sources/r1/cms/prod/1172/661172-h" style="height: 90px">
+                                                    <div class="tvv-name">Star Select 2</div>
+                                                                </div>
+      </a>
+      
+      <a href="//sport18-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/QFMWvp3/Cric-streaming-sports18.jpg" style="height: 90px">
+                <div class="tvv-name">Sports 18</div>
+            </div>
+        </a>
+        <a href="//18khel-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOEutjJrufebVrCL3uzP71pO0_KAtpKrtfdmygp6lviA&s" style="height: 90px">
+                <div class="tvv-name">Sports18 Khel</div>
+            </div>
+        </a>
+        
+     <a href="//astro-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/wgsqcGQ/20231026-131333.png" style="height: 90px">
+                <div class="tvv-name">Astro Cricket</div>
+            </div>
+        </a>
+        <a href="//willow-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/0DXJdR9/20231023-120020.png" style="height: 90px">
+                <div class="tvv-name">Willow Cricket</div>
+            </div>
+        </a>
+        <a href="//skysport-cricstreaming.vercel.app">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/yYWrvWs/20231206-144514.png" style="height: 90px">
+                <div class="tvv-name">Sky Sports Cricket</div>
+            </div>
+        </a>
+        
+        <a href="//skymix-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/g7gjTbz/20231206-144535.png" style="height: 90px">
+                <div class="tvv-name">Sky Sports Mix </div>
+            </div>
+        </a>
+        <a href="//sky-sports-mainevent.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/x2gFKBx/20231206-144439.png" style="height: 90px">
+                <div class="tvv-name">Sky Sports Main</div>
+            </div>
+        </a>
+        <a href="//sky-sports-football.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/CH59pXQ/20231206-144459.png" style="height: 90px">
+                <div class="tvv-name">Sky Sports Football</div>
+            </div>
+        </a>
+
+        <a href="//sky-premier-league.vercel.app/">
+                    <div class="tvv-item">
+                                    <img class="loading" src="https://i.ibb.co/TKb5WMq/Sky-premier-league.jpg" style="height: 90px">
+                                                    <div class="tvv-name">Sky Premier League</div>
+                                                                </div>
+        </a> 
+
+      <a href="//eurosport-cricstreaming.vercel.app">
+                    <div class="tvv-item">
+                                    <img class="loading" src="https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg)/origin-imgresizer.eurosport.com/2007/01/13/330222-24104969-2560-1440.jpg" style="height: 90px">
+                                                    <div class="tvv-name">EuroSports HD</div>
+                                                                </div>
+      </a>
+      
+      <a href="//tnt1-cricstreaming.vercel.app/">
+            <div class="tvv-item" style="text-decoration-color: rgb(177, 7, 197);">
+                <img class="loading" src="https://i.ibb.co/ByQXqRx/20231206-140655.png" style="height: 90px">
+                <div class="tvv-name">TNT Sports 1</div>
+            </div>
+        </a>
+        <a href="//tnt2-cricstreaming.vercel.app/">
+            <div class="tvv-item" style="text-decoration-color: rgb(177, 7, 197);">
+                <img class="loading" src="https://i.ibb.co/ySCYX6f/20231206-140840.png" style="height: 90px">
+                <div class="tvv-name">TNT Sports 2</div>
+            </div>
+        </a>
+        <a href="//tnt3-cricstreaming.vercel.app/">
+            <div class="tvv-item" style="text-decoration-color: rgb(177, 7, 197);">
+                <img class="loading" src="https://i.ibb.co/Ht7MCxp/20231206-140922.png" style="height: 90px">
+                <div class="tvv-name">TNT Sports 3</div>
+            </div>
+        </a>
+        <a href="//tnt4-cricstreaming.vercel.app/">
+            <div class="tvv-item" style="text-decoration-color: rgb(177, 7, 197);">
+                <img class="loading" src="https://i.ibb.co/cXJshtg/20231206-141018.png" style="height: 90px">
+                <div class="tvv-name">TNT Sports 4</div>
+            </div>
+        </a>
+      
+        <a href="//sony1-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/ByLj5Y4/Cric-streaming-sony1.jpg" style="height: 90px">
+                <div class="tvv-name">Sony Ten 1</div>
+            </div>
+        </a>
+        <a href="//sony2-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/VvFtvCz/Cric-streaming-sony2.jpg" style="height: 90px">
+                <div class="tvv-name">Sony Ten 2</div>
+            </div>
+        </a>
+        <a href="//sony3-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/mBZ1yTJ/Cric-streaming-sony3.jpg" style="height: 90px">
+                <div class="tvv-name">Sony Ten 3</div>
+            </div>
+        </a>
+        <a href="https://dai.google.com/ssai/event/x4LxWUcVSIiDaq1VCM7DSA/master.m3u8">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/4KVJ8pY/Cric-streaming-sony4.jpg" style="height: 90px">
+                <div class="tvv-name">Sony Ten 4</div>
+            </div>
+        </a>
+        <a href="//sony5-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/ZV7WGW1/Cric-streaming-sony5.jpg" style="height: 90px">
+                <div class="tvv-name">Sony Ten 5</div>
+            </div>
+        </a>
+       <a href="//daznzona-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRp1v2PTA6FuXbNPB8pJ9aONgQRf5vD1gyDdJreDe6Ki6dT56tV" style="height: 90px">
+                <div class="tvv-name">Dazn Zona</div>
+            </div>
+       </a>
+        <a href="//dazn1-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/phnhCB1/Cric-streaming-dazn1.jpg" style="height: 90px">
+                <div class="tvv-name">Dazn 1</div>
+            </div>
+        </a>
+        <a href="//dazn2-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/vVgbhxy/Cric-streaming-dazn2.jpg" style="height: 90px">
+                <div class="tvv-name">Dazn 2</div>
+            </div>
+        </a>
+        <a href="//dazn3-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/nM1Y6tC/Cric-streaming-dazn3.jpg" style="height: 90px">
+                <div class="tvv-name">Dazn 3</div>
+            </div>
+        </a>
+        <a href="//dazn4-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/CHLwJJq/Cric-streaming-dazn4.jpg" style="height: 90px">
+                <div class="tvv-name">Dazn 4</div>
+            </div>
+        </a>
+        <a href="//dazn5-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/PFRh1Fj/Cric-streaming-dazn5.jpg" style="height: 90px">
+                <div class="tvv-name">Dazn 5</div>
+            </div>
+        </a>
+        
+        <a href="//eleven1-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/QD9FX38/Cric-streaming-eleven1.png" style="height: 90px">
+                <div class="tvv-name">Eleven Sports 1</div>
+            </div>
+        </a>
+        <a href="//eleven2-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/DV88Z9j/Cric-streaming-eleven2.png" style="height: 90px">
+                <div class="tvv-name">Eleven Sports 2</div>
+            </div>
+        </a>
+        <a href="//eleven3-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/7XQVCMk/Cric-streaming-eleven3.png" style="height: 90px">
+                <div class="tvv-name">Eleven Sports 3</div>
+            </div>
+        </a>
+        <a href="//eleven4-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/KW12HY1/Cric-streaming-eleven4.png" style="height: 90px">
+                <div class="tvv-name">Eleven Sports 4</div>
+            </div>
+        </a>
+        <a href="//eleven5-cricstreaming.vercel.app/">
+            <div class="tvv-item">
+                <img class="loading" src="https://i.ibb.co/vPnNQrY/Cric-streaming-eleven5.png" style="height: 90px">
+                <div class="tvv-name">Eleven Sports 5</div>
+            </div>
+        </a>
